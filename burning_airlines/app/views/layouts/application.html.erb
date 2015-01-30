@@ -3,12 +3,37 @@
 <head>
   <title>BurningAirlines</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+  <nav>
+    <li>
+      <%= link_to 'Planes', airplanes_path %>
+    </li>
+    <li>
+      <%= link_to 'Flights', flights_path %>
+    </li>
+      <% if user_signed_in? %>
+          <li>
+            <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+          </li>
+            <% else %>
+          <li>
+            <%= link_to('Login', new_user_session_path)  %>  
+          </li>
+       <% end %>
+  </nav>
+
+
+
+      <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+
 <%= yield %>
 
+
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>
