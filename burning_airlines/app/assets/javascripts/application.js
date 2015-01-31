@@ -10,9 +10,15 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-
 //= require jquery_ujs
 //= require turbolinks
+//= require handlebars.runtime
+//= require_tree ./models
+//= require_tree ./collections
 //= require bootstrap-sprockets
 //= require_tree .
+
+var App = App || {};
+$(function(){
+  Backbone.history.start();
+});
